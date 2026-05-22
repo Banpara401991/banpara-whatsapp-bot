@@ -56,6 +56,31 @@ app.post('/webhook', async (req, res) => {
     }
 
     console.log('Mensagem recebida de:', from);
+      
+    //O ATENDENTE RECEBE A MENSAGEM DO CLIENTE
+    const textoCliente = message.text?.body || 'Mensagem não textual';
+
+await axios.post(
+    `https://graph.facebook.com/v23.0/${PHONE_NUMBER_ID}/messages`,
+    {
+        messaging_product: 'whatsapp',
+        to: '5594991591220', // número do atendente
+        type: 'text',
+        text: {
+            body:
+                '📢 Novo atendimento solicitado\n\n' +
+                '👤 Cliente: +' + from + '\n\n' +
+                '💬 Mensagem:\n' +
+                textoCliente
+        }
+    },
+    {
+        headers: {
+            Authorization: `Bearer ${META_TOKEN}`,
+            'Content-Type': 'application/json'
+        }
+    }
+);
 
           await axios.post(
     `https://graph.facebook.com/v23.0/${PHONE_NUMBER_ID}/messages`,
