@@ -11,6 +11,7 @@ const META_TOKEN = process.env.META_TOKEN;
 
 const PHONE_NUMBER_ID = '1089244394278826';
 
+// VERIFICAÇÃO DO WEBHOOK
 app.get('/', (req, res) => {
 
     const mode = req.query['hub.mode'];
@@ -24,6 +25,7 @@ app.get('/', (req, res) => {
     res.sendStatus(403);
 });
 
+// RECEBER MENSAGENS
 app.post('/', async (req, res) => {
 
     try {
@@ -36,23 +38,20 @@ app.post('/', async (req, res) => {
             body.entry[0].changes[0].value.messages
         ) {
 
-            const numero =
+            const from =
                 body.entry[0].changes[0].value.messages[0].from;
+
+            console.log('Mensagem recebida de:', from);
 
             await axios.post(
                 'https://graph.facebook.com/v23.0/${PHONE_NUMBER_ID}/messages',
                 {
                     messaging_product: 'whatsapp',
-                    to: numero,
+                    to: from,
                     type: 'text',
                     text: {
                         body:
-                            'Olá! 👋\n\n' +
-                            'Recebemos sua mensagem com sucesso.\n\n' +
-                            'Para atendimento oficial da Agência Xinguara entre em contato através do número:\n\n' +
-                            '📞 +55 94 XXXXX-XXXX\n\n' +
-                            '🌐 https://www.banpara.b.br\n\n' +
-                            'Obrigado pelo contato.'
+                            'Obrigado pelo contato com o Banpará. Para atendimento oficial, fale conosco pelo número (91) 4000-0000.'
                     }
                 },
                 {
@@ -74,8 +73,8 @@ app.post('/', async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 app.listen(PORT, () => {
-    console.log('Servidor rodando na porta ${PORT}');
+    console.log(`Servidor rodando na porta ${PORT}`);
 });
