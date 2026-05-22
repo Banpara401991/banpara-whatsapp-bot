@@ -53,7 +53,12 @@ app.post('/webhook', async (req, res) => {
                     type: 'text',
                     text: {
                         body:
-                            'Obrigado pelo contato com o Banpará. Para atendimento oficial, fale conosco pelo número (91) 4000-0000.'
+                            'Olá! 👋\n\n' +
+                            'Recebemos sua mensagem com sucesso.\n\n' +
+                            'Para atendimento oficial da Agência Xinguara entre em contato através do número:\n\n' +
+                            '📞 +55 94 98402-8241\n\n' +
+                            '🌐 https://www.banpara.b.br\n\n' +
+                            'Obrigado pelo contato.'
                     }
                 },
                 {
