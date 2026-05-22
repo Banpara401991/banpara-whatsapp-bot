@@ -9,6 +9,8 @@ const VERIFY_TOKEN = 'BANPARA_VERIFY';
 
 const META_TOKEN = process.env.META_TOKEN;
 
+console.log('TOKEN:', META_TOKEN);
+
 const PHONE_NUMBER_ID = '1089244394278826';
 
 // VERIFICAÇÃO DO WEBHOOK
