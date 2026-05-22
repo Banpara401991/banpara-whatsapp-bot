@@ -13,7 +13,7 @@ const PHONE_NUMBER_ID = '1089244394278826';
 
 app.get('/', (req, res) => {
 
-```
+
 const mode = req.query['hub.mode'];
 const token = req.query['hub.verify_token'];
 const challenge = req.query['hub.challenge'];
@@ -23,13 +23,13 @@ if (mode && token === VERIFY_TOKEN) {
 }
 
 res.sendStatus(403);
-```
+
 
 });
 
 app.post('/', async (req, res) => {
 
-```
+
 try {
 
     const body = req.body;
