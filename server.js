@@ -102,10 +102,11 @@ await axios.post(
                 '🕘 Horário de atendimento:\n' +
                 'Segunda a Sexta-feira, exceto feriados\n' +
                 '10:00h às 15:00h\n\n' +
-                'Para atendimento oficial da Agência Xinguara entre em contato através do número:\n\n' +
-                '📞 +55 94 98402-8241\n\n' +
+                '📞 Agência Banpará Xinguara:\n' +
+                '+55 94 98402-8241\n\n' +
                 '🌐 https://www.banpara.b.br\n\n' +
-                'Obrigado pelo contato.'
+                'Em breve nossa equipe entrará em contato para dar continuidade ao seu atendimento.\n\n' +
+                'Obrigado pelo contato. 💙'
         }
     },
     {
