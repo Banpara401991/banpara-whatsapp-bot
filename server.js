@@ -50,16 +50,15 @@ app.post('/', async (req, res) => {
                             'Olá! 👋\n\n' +
                             'Recebemos sua mensagem com sucesso.\n\n' +
                             'Para atendimento oficial da Agência Xinguara entre em contato através do número:\n\n' +
-                            '📞 +55 94 984028241\n\n' +
+                            '📞 +55 94 XXXXX-XXXX\n\n' +
                             '🌐 https://www.banpara.b.br\n\n' +
                             'Obrigado pelo contato.'
                     }
                 },
                 {
                     headers: {
-    Authorization: 'Bearer ${META_TOKEN}',
-    'Content-Type': 'application/json'
-}
+                        Authorization: 'Bearer ${META_TOKEN}',
+                        'Content-Type': 'application/json'
                     }
                 }
             );
