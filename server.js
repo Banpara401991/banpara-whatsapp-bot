@@ -49,6 +49,12 @@ app.post('/webhook', async (req, res) => {
     }
 
     const from = message.from;
+      
+    //Captura o nome do cliente 
+    const nomeCompleto =
+    body.entry[0].changes[0].value.contacts?.[0]?.profile?.name || 'Cliente';
+
+    const primeiroNome = nomeCompleto.split(' ')[0];
 
     // Ignora mensagens enviadas pelo próprio bot
     if (from === PHONE_NUMBER_ID) {
@@ -90,7 +96,8 @@ await axios.post(
         type: 'text',
         text: {
             body:
-                'Olá! 👋\n\n' +
+              //  'Olá! 👋\n\n' +
+                `Olá, ${primeiroNome}! 👋\n\n` +
                 'Recebemos sua mensagem com sucesso.\n\n' +
                 '🕘 Horário de atendimento:\n' +
                 'Segunda a Sexta-feira, exceto feriados\n' +
