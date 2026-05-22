@@ -57,32 +57,31 @@ app.post('/webhook', async (req, res) => {
 
     console.log('Mensagem recebida de:', from);
 
-            await axios.post(
+          await axios.post(
     `https://graph.facebook.com/v23.0/${PHONE_NUMBER_ID}/messages`,
     {
-                    messaging_product: 'whatsapp',
-                    to: from,
-                    type: 'text',
-                    text: {
-                        body:
-                            'Olá! 👋\n\n' +
-                            'Recebemos sua mensagem com sucesso.\n\n' +
-                            'Para atendimento oficial da Agência Xinguara entre em contato através do número:\n\n' +
-                            '📞 +55 94 98402-8241\n\n' +
-                            '🌐 https://www.banpara.b.br\n\n' +
-                            'Obrigado pelo contato.'
-                    }
-                },
-                {
-                    headers: {
-                        Authorization: `Bearer ${META_TOKEN}`,
-                        'Content-Type': 'application/json'
-                    }
-                }
-            );
+        messaging_product: 'whatsapp',
+        to: from,
+        type: 'text',
+        text: {
+            body:
+                'Olá! 👋\n\n' +
+                'Recebemos sua mensagem com sucesso.\n\n' +
+                'Para atendimento oficial da Agência Xinguara entre em contato através do número:\n\n' +
+                '📞 +55 94 98402-8241\n\n' +
+                '🌐 https://www.banpara.b.br\n\n' +
+                'Obrigado pelo contato.'
         }
+    },
+    {
+        headers: {
+            Authorization: `Bearer ${META_TOKEN}`,
+            'Content-Type': 'application/json'
+        }
+    }
+);
 
-        res.sendStatus(200);
+res.sendStatus(200);
 
     } catch (error) {
 
@@ -95,5 +94,5 @@ app.post('/webhook', async (req, res) => {
 const PORT = process.env.PORT || 10000;
 
 app.listen(PORT, () => {
-    console.log('Servidor rodando na porta ${PORT}');
+   console.log(`Servidor rodando na porta ${PORT}`);
 });
