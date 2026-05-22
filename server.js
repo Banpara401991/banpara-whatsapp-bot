@@ -12,7 +12,7 @@ const META_TOKEN = process.env.META_TOKEN;
 const PHONE_NUMBER_ID = '1089244394278826';
 
 // VERIFICAÇÃO DO WEBHOOK
-app.get('/', (req, res) => {
+app.get('/webhook', (req, res) => {
 
     const mode = req.query['hub.mode'];
     const token = req.query['hub.verify_token'];
@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 });
 
 // RECEBER MENSAGENS
-app.post('/', async (req, res) => {
+app.post('/webhook', async (req, res) => {
 
     try {
 
