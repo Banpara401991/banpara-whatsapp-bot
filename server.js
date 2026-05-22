@@ -57,8 +57,9 @@ app.post('/', async (req, res) => {
                 },
                 {
                     headers: {
-                        Authorization: 'Bearer ${EAALsLm8hYIMBRSWKqHX3ZAVqyk7zaEBIOGJ51MvYAQxZC7vXBMJnufD375jX0eX3ac6NWy8FQNQZB0pHcaQCfQv8JJM2Yw5SunkCm8xufmlmk7dtftOpVsCIOO4tmKOsQYbXFdAlnRtuRdyeU21oVvmyZCqc6JFZAxk5Y9CtKSbT37z7EZCXUBnqpiTttyiR3ZB4IjXgwdicijSWxGL8ZBLfLabc7zGGhIFKcraz}',
-                        'Content-Type': 'application/json'
+    Authorization: 'Bearer ${META_TOKEN}',
+    'Content-Type': 'application/json'
+}
                     }
                 }
             );
