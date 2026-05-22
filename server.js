@@ -67,6 +67,9 @@ app.post('/webhook', async (req, res) => {
             body:
                 'Olá! 👋\n\n' +
                 'Recebemos sua mensagem com sucesso.\n\n' +
+                '🕘 Horário de atendimento:\n' +
+                'Segunda a Sexta-feira, exceto feriados\n' +
+                '10:00h às 15:00h\n\n' +
                 'Para atendimento oficial da Agência Xinguara entre em contato através do número:\n\n' +
                 '📞 +55 94 98402-8241\n\n' +
                 '🌐 https://www.banpara.b.br\n\n' +
