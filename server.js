@@ -30,20 +30,32 @@ app.get('/webhook', (req, res) => {
 // RECEBER MENSAGENS
 app.post('/webhook', async (req, res) => {
 
-    try {
+  const body = req.body;
 
-        const body = req.body;
+  try {
 
-        if (
-            body.entry &&
-            body.entry[0].changes &&
-            body.entry[0].changes[0].value.messages
-        ) {
+    const value = body.entry[0].changes[0].value;
 
-            const from =
-                body.entry[0].changes[0].value.messages[0].from;
+    // Ignora eventos de status
+    if (value.statuses) {
+      return res.sendStatus(200);
+    }
 
-            console.log('Mensagem recebida de:', from);
+    const message = value.messages?.[0];
+
+    // Se não existir mensagem, encerra
+    if (!message) {
+      return res.sendStatus(200);
+    }
+
+    const from = message.from;
+
+    // Ignora mensagens enviadas pelo próprio bot
+    if (from === PHONE_NUMBER_ID) {
+      return res.sendStatus(200);
+    }
+
+    console.log('Mensagem recebida de:', from);
 
             await axios.post(
     `https://graph.facebook.com/v23.0/${PHONE_NUMBER_ID}/messages`,
