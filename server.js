@@ -75,7 +75,8 @@ await axios.post(
         text: {
             body:
                 '📢 Novo atendimento solicitado\n\n' +
-                '👤 Cliente: +' + from + '\n\n' +
+                '👤 Cliente: ' + nomeCompleto + '\n' +
+                '📞 Número: +' + from + '\n\n' +
                 '💬 Mensagem:\n' +
                 textoCliente
         }
