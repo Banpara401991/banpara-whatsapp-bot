@@ -72,7 +72,7 @@ const respostaAtendente = await axios.post(
     `https://graph.facebook.com/v23.0/${PHONE_NUMBER_ID}/messages`,
     {
         messaging_product: 'whatsapp',
-        to: '5594984028241',
+        to: '5594991591220',
         type: 'text',
         text: {
             body:
