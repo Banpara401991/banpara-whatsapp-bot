@@ -62,14 +62,15 @@ app.post('/webhook', async (req, res) => {
     }
 
     console.log('Mensagem recebida de:', from);
-    console.log('Cliente:', nomeCompleto);
-    console.log('Número cliente:', from);
-    console.log('Texto:', textoCliente);
+    
       
     //O ATENDENTE RECEBE A MENSAGEM DO CLIENTE
    const textoCliente = message.text?.body || 'Mensagem não textual';
+    console.log('Cliente:', nomeCompleto);
+    console.log('Número cliente:', from);
+    console.log('Texto:', textoCliente);
 
-console.log('Tentando encaminhar para atendente...');
+    console.log('Tentando encaminhar para atendente...');
 
 const respostaAtendente = await axios.post(
     `https://graph.facebook.com/v23.0/${PHONE_NUMBER_ID}/messages`,
