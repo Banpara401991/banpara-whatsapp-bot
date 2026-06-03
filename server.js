@@ -72,7 +72,7 @@ const respostaAtendente = await axios.post(
     `https://graph.facebook.com/v23.0/${PHONE_NUMBER_ID}/messages`,
     {
         messaging_product: 'whatsapp',
-        to: '5594984028241',
+        to: '559484028241',
         type: 'text',
         text: {
             body:
@@ -92,6 +92,7 @@ const respostaAtendente = await axios.post(
 );
 
 console.log('ATENDENTE OK:');
+console.log('Número destino:', respostaAtendente.data.contacts[0].wa_id);
 console.log(JSON.stringify(respostaAtendente.data, null, 2));
           await axios.post(
     `https://graph.facebook.com/v23.0/${PHONE_NUMBER_ID}/messages`,
