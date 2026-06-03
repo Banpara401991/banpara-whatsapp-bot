@@ -62,6 +62,9 @@ app.post('/webhook', async (req, res) => {
     }
 
     console.log('Mensagem recebida de:', from);
+    console.log('Cliente:', nomeCompleto);
+    console.log('Número cliente:', from);
+    console.log('Texto:', textoCliente);
       
     //O ATENDENTE RECEBE A MENSAGEM DO CLIENTE
    const textoCliente = message.text?.body || 'Mensagem não textual';
@@ -75,12 +78,13 @@ const respostaAtendente = await axios.post(
         to: '559484028241',
         type: 'text',
         text: {
-            body:
-                '📢 Novo atendimento solicitado\n\n' +
-                '👤 Cliente: ' + nomeCompleto + '\n' +
-                '📞 Número: +' + from + '\n\n' +
-                '💬 Mensagem:\n' +
-                textoCliente
+             body: 'TESTE ATENDENTE'
+          //  body:
+            / /   '📢 Novo atendimento solicitado\n\n' +
+           /  /   '👤 Cliente: ' + nomeCompleto + '\n' +
+             //   '📞 Número: +' + from + '\n\n' +
+             //   '💬 Mensagem:\n' +
+             //   textoCliente
         }
     },
     {
