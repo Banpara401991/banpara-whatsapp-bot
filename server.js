@@ -76,16 +76,15 @@ const respostaAtendente = await axios.post(
     `https://graph.facebook.com/v23.0/${PHONE_NUMBER_ID}/messages`,
     {
         messaging_product: 'whatsapp',
-        to: '5594991591220',
+        to: '5594984028241',
         type: 'text',
         text: {
-             body: 'TESTE ATENDENTE'
-          //  body:
-            //   '📢 Novo atendimento solicitado\n\n' +
-           //   '👤 Cliente: ' + nomeCompleto + '\n' +
-             //   '📞 Número: +' + from + '\n\n' +
-             //   '💬 Mensagem:\n' +
-             //   textoCliente
+               body:
+               '📢 Novo atendimento solicitado\n\n' +
+                '👤 Cliente: ' + nomeCompleto + '\n' +
+                '📞 Número: +' + from + '\n\n' +
+               '💬 Mensagem:\n' +
+                textoCliente
         }
     },
     {
@@ -97,7 +96,8 @@ const respostaAtendente = await axios.post(
 );
 
 console.log('ATENDENTE OK:');
-console.log('Número destino:', respostaAtendente.data.contacts[0].wa_id);
+console.log('Número configurado:', '5594984028241');
+console.log('Número reconhecido pela Meta:', respostaAtendente.data.contacts?.[0]?.wa_id);
 console.log(JSON.stringify(respostaAtendente.data, null, 2));
           await axios.post(
     `https://graph.facebook.com/v23.0/${PHONE_NUMBER_ID}/messages`,
