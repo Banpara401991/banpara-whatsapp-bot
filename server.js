@@ -64,13 +64,15 @@ app.post('/webhook', async (req, res) => {
     console.log('Mensagem recebida de:', from);
       
     //O ATENDENTE RECEBE A MENSAGEM DO CLIENTE
-    const textoCliente = message.text?.body || 'Mensagem não textual';
+   const textoCliente = message.text?.body || 'Mensagem não textual';
 
-await axios.post(
+console.log('Tentando encaminhar para atendente...');
+
+const respostaAtendente = await axios.post(
     `https://graph.facebook.com/v23.0/${PHONE_NUMBER_ID}/messages`,
     {
         messaging_product: 'whatsapp',
-        to: '5594984028241', // número do atendente
+        to: '5594984028241',
         type: 'text',
         text: {
             body:
@@ -89,6 +91,8 @@ await axios.post(
     }
 );
 
+console.log('ATENDENTE OK:');
+console.log(JSON.stringify(respostaAtendente.data, null, 2));
           await axios.post(
     `https://graph.facebook.com/v23.0/${PHONE_NUMBER_ID}/messages`,
     {
@@ -122,10 +126,16 @@ res.sendStatus(200);
 
     } catch (error) {
 
-        console.log(error.response?.data || error.message);
+    console.log('ERRO COMPLETO');
 
-        res.sendStatus(500);
+    if (error.response) {
+        console.log(JSON.stringify(error.response.data, null, 2));
+    } else {
+        console.log(error.message);
     }
+
+    res.sendStatus(500);
+}
 });
 
 const PORT = process.env.PORT || 10000;
