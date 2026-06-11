@@ -76,7 +76,7 @@ const respostaAtendente = await axios.post(
     `https://graph.facebook.com/v23.0/${PHONE_NUMBER_ID}/messages`,
     {
         messaging_product: 'whatsapp',
-        to: '5594981583965',
+        to: '5594991591220',
         type: 'text',
         text: {
                body:
@@ -96,7 +96,7 @@ const respostaAtendente = await axios.post(
 );
 
 console.log('ATENDENTE OK:');
-console.log('Número configurado:', '5594981583965');
+console.log('Número configurado:', '5594991591220');
 console.log('Número reconhecido pela Meta:', respostaAtendente.data.contacts?.[0]?.wa_id);
 console.log(JSON.stringify(respostaAtendente.data, null, 2));
           await axios.post(
